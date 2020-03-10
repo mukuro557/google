@@ -1,11 +1,14 @@
 const router = require("express").Router();
+const passport = require("passport");
 
 router.get("/login", (req, res) => {
     res.render("login.ejs");
 });
+//Login google
+router.get("/google",passport.authenticate("google",{scope: ["profile", "email"]}));
 
-router.get("/google", (req, res) => {
- 
+router.get("/google/redirect", (req, res) => {
+res.send("Login OK, show profile");
 });
 
 module.exports = router;
