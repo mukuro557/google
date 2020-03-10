@@ -7,7 +7,7 @@ router.get("/login", (req, res) => {
 //Login google
 router.get("/google",passport.authenticate("google",{scope: ["profile", "email"]}));
 
-router.get("/google/redirect", (req, res) => {
+router.get("/google/redirect",passport.authenticate("google"), (req, res) => {
 res.send("Login OK, show profile");
 });
 
